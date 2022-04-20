@@ -5,7 +5,7 @@ List<int> numerosRestantes = new List<int>();
 
 //Presentación
 Console.WriteLine("Ingrese el mensaje a encriptar:\n");
-string mensaje = Console.ReadLine();
+string mensaje = Console.ReadLine().Replace(" ", "");
 char[] charArray = mensaje.ToCharArray();
 
 string MensajeCrifrado = Cifrar(charArray);
@@ -14,13 +14,12 @@ Console.WriteLine("\nMensaje Cifrado: " + MensajeCrifrado);
 string MensajeDescifrado = Descifrar(MensajeCrifrado);
 Console.WriteLine("\nMensaje Descifrado: " + MensajeDescifrado);
 
-
 //Método de Cifrado
 String Cifrar(char[] MensajeACrifrar) {
     for(int i = 0; i < MensajeACrifrar.Length; i++) {
-        if(EsPrimo(i))
+        if(EsPrimo(i + 1))
             numerosPrimos.Add(i);
-        if(EsPar(i) && !numerosPrimos.Contains(i))
+        if(EsPar(i + 1) && !numerosPrimos.Contains(i))
             numerosPares.Add(i);
         if(!numerosPrimos.Contains(i) && !numerosPares.Contains(i))
             numerosRestantes.Add(i);
